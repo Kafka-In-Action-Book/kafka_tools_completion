@@ -1,0 +1,404 @@
+_connect-distributed() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-daemon"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _connect-distributed connect-distributed.sh
+
+_connect-standalone() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-daemon"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _connect-standalone connect-standalone.sh
+
+_kafka-acls() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--authorizer --authorizer-properties --topic --cluster --group --add --remove --list --operation --allow-principal --deny-principal --allow-host --deny-host --producer --consumer --help --force"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-acls kafka-acls.sh
+
+_kafka-configs() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --alter --describe --entity-type --entity-name --entity-default --add-config --delete-config --help --force"
+    
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-configs kafka-configs.sh
+
+_kafka-console-consumer() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="---topic --whitelist --blacklist --partition --offset --zookeeper --consumer-property --consumer.config --formatter --property --delete-consumer-offsets --from-beginning --max-messages --timeout-ms --skip-message-on-error --csv-reporter-enabled --metrics-dir --new-consumer --bootstrap-server --key-deserializer --value-deserializer --enable-systest-events"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-console-consumer kafka-console-consumer.sh
+
+_kafka-console-producer() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--topic --broker-list --sync --compression-codec --batch-size --message-send-max-retries --retry-backoff-ms --timeout --queue-size --queue-enqueuetimeout-ms --request-required-acks --request-timeout-ms --metadata-expiry-ms --max-block-ms --max-memory-bytes --max-partition-memory-bytes --value-serializer --key-serializer --line-reader --socket-buffer-size --property --producer-property --producer.config --old-producer"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-console-producer kafka-console-producer.sh
+
+_kafka-consumer-groups() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --bootstrap-server --group --topic --list --describe --delete --new-consumer --command-config"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-consumer-groups kafka-consumer-groups.sh
+
+_kafka-consumer-offset-checker() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --topic --group --socket.timeout.ms --retry.backoff.ms --broker-info --help"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-consumer-offset-checker kafka-consumer-offset-checker.sh
+
+_kafka-consumer-perf-test() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --broker-list --topic --group --fetch-size --from-latest --socket-buffer-size --threads --num-fetch-threads --new-consumer --consumer.config"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-consumer-perf-test kafka-consumer-perf-test.sh
+
+_kafka-mirror-maker() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--consumer.config --new.consumer --producer.config --num.streams --whitelist --blacklist --offset.commit.interval.ms --consumer.rebalance.listener --rebalance.listener.args message.handler --message.handler.args --abort.on.send.failure --help"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-mirror-maker kafka-mirror-maker.sh
+
+_kafka-preferred-replica-election() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--path-to-json-file --zookeeper"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-preferred-replica-election kafka-preferred-replica-election.sh
+
+_kafka-producer-perf-test() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="topic_name num_records record_size target_records_sec"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-producer-perf-test kafka-producer-perf-test.sh
+
+_kafka-reassign-partitions() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --generate --execute --verify --reassignment-json-file --topics-to-move-json-file --broker-list --disable-rack-aware --throttle"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-reassign-partitions kafka-reassign-partitions.sh
+
+_kafka-replay-log-producer() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --broker-list --inputtopic --outputtopic --messages --threads --reporting-interval --property --sync"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-replay-log-producer kafka-replay-log-producer.sh
+
+_kafka-replica-verification() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--broker-list --fetch-size --max-wait-ms --topic-white-list --time --report-interval-ms"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-replica-verification kafka-replica-verification.sh
+
+#_kafka-run-class() 
+#{
+#    local cur prev opts
+#    COMPREPLY=()
+#    cur="${COMP_WORDS[COMP_CWORD]}"
+#    prev="${COMP_WORDS[COMP_CWORD-1]}"
+#    opts="-daemon -name -loggc"
+#
+#    if [[ ${cur} == -* ]] ; then
+#        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+#        return 0
+#    fi
+#}
+#complete -F _kafka-run-class kafka-run-class.sh
+
+_kafka-server-start() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-daemon --override"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-server-start kafka-server-start.sh
+
+_kafka-server-stop() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=""
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-server-stop kafka-server-stop.sh
+
+_kafka-simple-consumer-shell() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="---broker-list --topic --partition --replica --offset --clientId --fetchsize --formatter --property --print-offsets --max-wait-ms --max-messages --skip-message-on-error --no-wait-at-logend"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-simple-consumer-shell kafka-simple-consumer-shell.sh
+
+_kafka-streams-application-reset() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--application-id --bootstrap-servers --zookeeper --input-topics --intermediate-topics"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-streams-application-reset kafka-streams-application-reset.sh
+
+_kafka-topics() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper --list --create --delete --alter --describe --help --topic --config --delete-config --partitions --replication-factor --replica-assignment --under-replicated-partitions --unavailable-partitions --topics-with-overrides --if-exists --if-not-exists --disable-rack-aware --force"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-topics kafka-topics.sh
+
+_kafka-verifiable-consumer() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--broker-list --topic --group-id --max-messages --session-timeout --verbose --eanble-autocommit --reset-policy --assignment-strategy --consumer-config"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-verifiable-consumer kafka-verifiable-consumer.sh
+
+_kafka-verifiable-producer() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--topic --broker-list --max-messages --throughput --acks --producer.config --value.prefix"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _kafka-verifiable-producer kafka-verifiable-producer.sh
+
+_zookeeper-security-migration() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="--zookeeper.acl --zookeeper.connect --zookeeper.session.timeout --zookeeper.connection.timeout --help"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _zookeeper-security-migration zookeeper-security-migration.sh
+
+_zookeeper-server-start() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts="-daemon"
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _zookeeper-server-start zookeeper-server-start.sh
+
+_zookeeper-server-stop() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=""
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _zookeeper-server-stop zookeeper-server-stop.sh
+
+_zookeeper-shell() 
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=""
+
+    if [[ ${cur} == -* ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _zookeeper-shell zookeeper-shell.sh
